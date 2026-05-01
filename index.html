@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Faraz Mirza - Data Engineer & Analytics Portfolio | Python, SQL, Power BI, ETL, Data Warehousing">
+    <meta name="keywords" content="Faraz Mirza, Data Engineer, Data Analyst, ETL, Python, SQL, Power BI, Data Analytics">
+    <meta name="author" content="Faraz Mirza">
+    <title>Faraz Mirza | Data Engineer & Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-glow: rgba(59, 130, 246, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.01);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --accent-primary: #60a5fa;
+            --accent-secondary: #a78bfa;
+            --accent-glow: rgba(96, 165, 250, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.3);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.3rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem 0;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            animation: fadeInRight 0.6s ease;
+        }
+
+        .hero-image i {
+            font-size: 4rem;
+            margin: 0 0.5rem;
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+
+        .hero-image i:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-items span {
+            background: var(--accent-glow);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-items span:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-primary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tech span {
+            background: var(--accent-glow);
+            padding: 0.2rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .project-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent-primary);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-role {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .timeline-item li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: var(--accent-glow);
+            padding: 0.6rem 1.3rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-primary);
+        }
+
+        /* GitHub Section */
+        .github-embed {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .github-embed img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .github-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .github-stat {
+            text-align: center;
+        }
+
+        .github-stat .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--bg-card);
+            border-radius: 30px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        /* Resume Section */
+        .resume-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border-radius: 30px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .nav-container {
+                flex-direction: column;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Faraz Mirza</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Faraz Mirza</h1>
+                        <div class="tagline">Data Engineer | Analytics Expert | BI Specialist</div>
+                        <p class="description">I transform raw, complex data into clean, actionable insights through robust ETL pipelines, interactive dashboards, and compelling data storytelling. Specializing in end-to-end data solutions.</p>
+                        <div class="cta-buttons">
+                            <a href="#contact" class="btn-primary">Get In Touch</a>
+                            <button class="btn-secondary" id="resumeBtn">Download Resume</button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">6+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">6+</div>
+                                <div class="stat-label">GitHub Contributions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <i class="fas fa-database"></i>
+                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <i class="fas fa-chart-pie"></i>
+                        <i class="fas fa-robot"></i>
+                        <p style="margin-top: 1.5rem; color: var(--accent-primary); font-weight: 500;">Raw Data → Clean Data → Insights → Decisions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Arsenal</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-simple"></i> Data Engineering & ETL</h3>
+                        <div class="skill-items">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Data Cleaning</span>
+                            <span>ETL Pipelines</span>
+                            <span>Data Warehousing</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Databases & Analytics</h3>
+                        <div class="skill-items">
+                            <span>MySQL</span>
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>Excel (Advanced)</span>
+                            <span>Pivot Tables</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Visualization & BI</h3>
+                        <div class="skill-items">
+                            <span>Power BI Dashboards</span>
+                            <span>Data Storytelling</span>
+                            <span>KPI Tracking</span>
+                            <span>Business Insights</span>
+                            <span>Performance Metrics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Engineering Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-chart-simple"></i></div>
+                        <h3>Costco Sales Analytics</h3>
+                        <div class="project-tech"><span>Power BI</span><span>DAX</span><span>Data Modeling</span></div>
+                        <p>End-to-end retail sales dashboard with time-series analysis, KPI tracking, and automated reporting for actionable business insights.</p>
+                        <a href="https://github.com/FarazMirzacool/Costco_Sales_Analysis_Dashbaord" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-brain"></i></div>
+                        <h3>ML Breed Classification</h3>
+                        <div class="project-tech"><span>Python</span><span>Scikit-learn</span><span>Jupyter</span></div>
+                        <p>Machine learning framework for cattle breed identification using classification algorithms and feature engineering.</p>
+                        <a href="https://github.com/FarazMirzacool/Cattle_Buffolo_Breed_Analysis_DS" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3>Smart Timetable Engine</h3>
+                        <div class="project-tech"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSP</span></div>
+                        <p>Constraint satisfaction and greedy search algorithms for automated academic timetable generation.</p>
+                        <a href="https://github.com/FarazMirzacool/Web_Based_Time_Table_Creator_SIH" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Resume Intelligence Parser</h3>
+                        <div class="project-tech"><span>Python</span><span>NLP</span><span>Flask</span></div>
+                        <p>Automated resume parsing with keyword extraction and scoring algorithms for candidate screening.</p>
+                        <a href="https://github.com/FarazMirzacool/Resume_Parser_Keyword_Analysis" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI Learning Assistant</h3>
+                        <div class="project-tech"><span>AI Integration</span><span>JavaScript</span><span>REST APIs</span></div>
+                        <p>Intelligent assistant for students with natural language processing and personalized learning support.</p>
+                        <a href="https://github.com/FarazMirzacool/Ai_Powered_Learning_Assistant_Techsprint" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>EventUtsav Manager</h3>
+                        <div class="project-tech"><span>MERN</span><span>Full Stack</span><span>Real-time</span></div>
+                        <p>Comprehensive event management platform for institutional and cultural event coordination.</p>
+                        <a href="https://github.com/FarazMirzacool/Event_Utsav_Symbiosis_Hackathon_2k26" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Professional Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>SaiKet Systems</h3>
+                        <div class="timeline-role">Business Analyst Intern</div>
+                        <div class="timeline-date">April 2026 - Present</div>
+                        <ul>
+                            <li>Building end-to-end data pipelines using SQL and Python</li>
+                            <li>Creating interactive Power BI dashboards for stakeholder reporting</li>
+                            <li>Automating data cleaning processes reducing manual work by 40%</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>PIEMR, Indore</h3>
+                        <div class="timeline-role">Student Coordinator - Technical Events</div>
+                        <div class="timeline-date">February 2024 - Present</div>
+                        <ul>
+                            <li>Coordinated 10+ technical workshops with 300+ participants</li>
+                            <li>Led team of 30 volunteers for event logistics and registration</li>
+                            <li>Managed cross-departmental communication for seamless execution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Credentials & Learning</h2>
+                <div class="skills-grid" style="margin-bottom: 2rem;">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <p><strong>PIEMR, Indore</strong><br>B.Tech - Artificial Intelligence & Data Science<br>2022 - 2027</p>
+                        <p style="margin-top: 1rem;"><strong>RGPV, Bhopal</strong><br>B.Tech - AI & Data Science<br>2022 - 2027</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                        <div class="cert-grid" style="justify-content: flex-start;">
+                            <span class="cert-item">Pandas Mastery</span>
+                            <span class="cert-item">Advanced SQL</span>
+                            <span class="cert-item">Power BI Expert</span>
+                            <span class="cert-item">Excel Analytics</span>
+                            <span class="cert-item">Python for DS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Development Activity</h2>
+                <div class="github-embed">
+                    <img src="https://ghchart.rshah.org/FarazMirzacool" alt="GitHub Contributions" style="width: 100%; max-width: 800px;">
+                    <div class="github-stats">
+                        <div class="github-stat">
+                            <div class="number">6</div>
+                            <div>Live Projects</div>
+                        </div>
+                        <div class="github-stat">
+                            <div class="number">45</div>
+                            <div>Commits (Year)</div>
+                        </div>
+                        <div class="github-stat">
+                            <div class="number">100%</div>
+                            <div>Code Quality</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section>
+            <div class="container">
+                <div class="resume-section">
+                    <i class="fas fa-file-pdf" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 1rem; display: inline-block;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Ready to Discuss Data Engineering?</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Download my comprehensive resume to explore my complete profile</p>
+                    <button class="btn-primary" id="resumeBtn2" style="border: none; cursor: pointer;">📄 Download Complete Resume</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Open for Opportunities!</h3>
+                        <p style="color: var(--text-muted); margin: 1rem 0;">Looking for data engineering or analytics roles where I can build scalable data solutions and drive business decisions.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>farazmirza57079@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+91 9302674518</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Indore, Madhya Pradesh, India</span>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/FarazMirzacool" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/farazmirza100" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="portfolioContactForm">
+                            <input type="text" placeholder="Full Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="text" placeholder="Subject">
+                            <textarea rows="4" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn-primary">Send Message →</button>
+                        </form>
+                        <p id="formStatus" style="margin-top: 1rem; font-size: 0.85rem; text-align: center;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Faraz Mirza | Data Engineer & Analytics Portfolio | Built with <i class="fas fa-heart" style="color: var(--accent-primary);"></i> for recruiters</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Resume download
+        const resumeBtns = document.querySelectorAll('#resumeBtn, #resumeBtn2');
+        resumeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('📄 Please upload your resume as "Faraz_Mirza_Resume.pdf" in the same folder.\n\nContact me directly at farazmirza57079@gmail.com until then.');
+            });
+        });
+        
+        // Form handling
+        const form = document.getElementById('portfolioContactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formStatus.innerHTML = '✓ Message ready! Please email me directly at farazmirza57079@gmail.com';
+            formStatus.style.color = 'var(--accent-primary)';
+            form.reset();
+            setTimeout(() => {
+                formStatus.innerHTML = '';
+            }, 5000);
+        });
+        
+        // Add scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.skill-category, .project-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
